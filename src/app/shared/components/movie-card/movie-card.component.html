@@ -1,0 +1,24 @@
+
+<mat-card class="card h-100">
+    <mat-card-title class="d-flex justify-content-between">{{movieObj.title}}
+        <small  class="font-weight-bold" [ngClass]="{
+            'text-success': movieObj.isActive,
+            'text-danger': !movieObj.isActive
+        }">{{movieObj.isActive? 'Active': 'In-Active'}}</small>
+    </mat-card-title>
+    <mat-divider inset></mat-divider>
+    <mat-card-content>
+        <figure class="img text-center">
+          <img [src]="movieObj.imageUrl" [alt]="movieObj.title">
+        </figure>
+        <figcaption>
+            {{movieObj.description}}
+        </figcaption>
+    </mat-card-content>
+        <mat-divider inset></mat-divider>
+
+    <mat-card-footer class="d-flex justify-content-between" >
+        <button mat-raised-button color="primary" class="m-2" (click)="onEdit()"><mat-icon>edit</mat-icon></button>
+        <button mat-raised-button color="warn" class="m-2" (click)="onRemove()"><mat-icon>delete</mat-icon></button>
+    </mat-card-footer>
+</mat-card>

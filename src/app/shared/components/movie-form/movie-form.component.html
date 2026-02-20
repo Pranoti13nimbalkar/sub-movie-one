@@ -1,0 +1,29 @@
+
+<mat-card class="card font-weight-bold">
+    <mat-card-content>
+        <h2 class="text-danger font-weight-bold">{{isinEditMode? 'Update Movie' : 'Add Movie'}}</h2>
+        <form [formGroup]="movieForm" (ngSubmit)="onAddMovie()">
+            <div class="form-group">
+                <label for="title">Title*</label>
+                <input type="text" class="form-control" formControlName="title">
+            </div>
+             <div class="form-group">
+                <label for="description">Description*</label>
+                <textarea type="text" rows="2" class="form-control" formControlName="description"></textarea>
+            </div>
+              <div class="form-group">
+                <label for="imageUrl">ImageUrl*</label>
+                <input type="text" class="form-control" formControlName="imageUrl" placeholder="imageUrl">
+            </div>
+             <div class="form-group">
+                <label for="isActive">IsActive*</label>
+                <select formControlName="isActive" id="" class="form-control">
+                    <option [ngValue]="true">Active</option>
+                    <option [ngValue]="false">IN-Active</option>
+                </select>
+            </div>
+            <button mat-raised-button color="primary" *ngIf="!isinEditMode" class="w-100" [disabled]="this.movieForm.invalid">Add Movie</button>
+            <button mat-raised-button color="primary" type="button" *ngIf="isinEditMode" (click)="onUpdate()" class="w-100">Update Movie</button>
+        </form>
+    </mat-card-content>
+</mat-card>
